@@ -3,7 +3,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-
 const methodOverride = require("method-override");
 const passport = require("passport");
 const session = require("express-session");
@@ -12,18 +11,15 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-app.use(express.static("views")); //omogucava serviranje statickih fajlova u browser
+app.use(express.static("views"));
 app.set("view engine", "ejs");
 
-//load config
 dotenv.config({ path: "./config/config.env" });
 
-//Passport config
 require("./config/passport")(passport);
 
 connectDB();
 
-// Logging
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }

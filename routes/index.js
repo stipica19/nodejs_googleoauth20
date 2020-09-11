@@ -6,9 +6,9 @@ router.get("/", noAuth, (req, res) => {
   res.render("login");
 });
 
-router.get("/good", isAuth, (req, res) => {
+router.get("/profil", isAuth, (req, res) => {
   // console.log(req.user);
-  res.render("good", {
+  res.render("profil", {
     name: req.user.firstName,
     lastName: req.user.lastName,
     image: req.user.image,
